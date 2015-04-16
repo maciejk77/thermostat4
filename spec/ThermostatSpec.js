@@ -20,6 +20,11 @@ describe('Thermostat', function(){
       expect(thermostat.temperature).toEqual(19);
     });
 
+    it('can reset to default value', function(){
+      thermostat.resetTemp();
+      expect(thermostat.reset).toEqual(20);
+    });
+
   });
 
 });
