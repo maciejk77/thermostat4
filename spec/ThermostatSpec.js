@@ -37,11 +37,22 @@ describe('Thermostat', function(){
     });
 
     it('cannot raise over 25 degrees when powersaving is on', function() {
-      thermostat.powersaving;
+      thermostat.powersaving = true;
       thermostat.temperature = 25;
       expect( function(){ thermostat.up(); }).toThrow(new Error("You cannot go higher than 25 degrees"));
+    });
+
+    it('cannot raise over 35 degrees when powersaving is off', function(){
+      thermostat.powersaving = false;
+      thermostat.temperature = 35;
+      expect( function(){ thermostat.up(); }).toThrow(new Error("You cannot go higher than 35 degrees"));
     });
 
   });
 
 });
+
+
+
+
+
