@@ -42,10 +42,10 @@ describe('Thermostat', function(){
       expect( function(){ thermostat.up(); }).toThrow(new Error("You cannot go higher than 25 degrees"));
     });
 
-    it('cannot raise over 35 degrees when powersaving is off', function(){
+    it('cannot raise over 32 degrees when powersaving is off', function(){
       thermostat.powersaving = false;
-      thermostat.temperature = 35;
-      expect( function(){ thermostat.up(); }).toThrow(new Error("You cannot go higher than 35 degrees"));
+      thermostat.temperature = 32;
+      expect( function(){ thermostat.up(); }).toThrow(new Error("You cannot go higher than 32 degrees"));
     });
 
   });
@@ -55,22 +55,22 @@ describe('Thermostat', function(){
       it('changes to green when < 18', function() {
         thermostat.temperature = 17;
         thermostat.colourTemp();
-        expect(thermostat.colour).toEqual('green');
+        expect(thermostat.colour).toEqual("green");
       });
 
       it('changes to yellow when between 18 and 25', function(){
         thermostat.temperature = 17;
         thermostat.colourTemp = 'green';
         thermostat.up();
-        expect(thermostat.colour).toEqual('yellow');
+        expect(thermostat.colour).toEqual("yellow");
       });
 
       it('changes to red when > 25', function() {
         thermostat.powersaving = false;
         thermostat.temperature = 25;
-        thermostat.colourTemp = 'yellow';
         thermostat.up();
-        expect(thermostat.colour).toEqual('red');
+        thermostat.colourTemp(); // this line was above, test not passing
+        expect(thermostat.colour).toEqual("red");
       });
   });
 

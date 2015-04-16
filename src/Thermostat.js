@@ -8,8 +8,8 @@ Thermostat.prototype.up = function() {
   if(this.temperature >= 25 && this.powersaving){
     throw new Error("You cannot go higher than 25 degrees");
   };
-  if(this.temperature >= 35){
-    throw new Error("You cannot go higher than 35 degrees");
+  if(this.temperature >= 32){
+    throw new Error("You cannot go higher than 32 degrees");
   };
   this.temperature ++;
 };
@@ -27,10 +27,13 @@ Thermostat.prototype.resetTemp = function() {
 
 Thermostat.prototype.colourTemp = function() {
   if(this.temperature < 18){
-    this.colour = "green"
+    this.colour = "green";
   };
 
   if(this.temperature >= 18 && this.temperature <= 25) {
-    this.colour = "yellow"
+    this.colour = "yellow";
+  };
+  if(this.temperature > 25){
+    this.colour = "red";
   };
 };
