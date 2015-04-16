@@ -27,6 +27,10 @@ Thermostat.prototype.resetTemp = function() {
 
 Thermostat.prototype.colourTemp = function() {
   if(this.temperature < 18){
-  this.colour = "green"
+    this.colour = "green"
+  };
+
+  if(this.temperature >= 18 && this.temperature <= 25) {
+    this.colour = "yellow"
   };
 };
