@@ -1,6 +1,7 @@
 var Thermostat = function(){
   this.temperature = 20;
   this.powersaving = true;
+  this.colour = "yellow";
 };
 
 Thermostat.prototype.up = function() {
@@ -22,4 +23,10 @@ Thermostat.prototype.down = function() {
 
 Thermostat.prototype.resetTemp = function() {
   this.temperature = 20;
+};
+
+Thermostat.prototype.colourTemp = function() {
+  if(this.temperature < 18){
+  this.colour = "green"
+  };
 };

@@ -54,7 +54,15 @@ describe('Thermostat', function(){
 
       it('changes to green when < 18', function() {
         thermostat.temperature = 17;
-        expect(temperature.colour).toEqual('green');
+        thermostat.colourTemp();
+        expect(thermostat.colour).toEqual('green');
+      });
+
+      it('changes to yellow when between 18 and 25', function(){
+        thermostat.temperature = 17;
+        thermostat.colourTemp();
+        thermpostat.up();
+        expect(thermostat.colour).toEqual('yellow');
       });
   });
 
