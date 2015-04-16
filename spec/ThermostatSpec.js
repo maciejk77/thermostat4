@@ -50,6 +50,14 @@ describe('Thermostat', function(){
 
   });
 
+  describe('changes colour depending on temp', function() {
+
+      it('changes to green when < 18', function() {
+        thermostat.temperature = 17;
+        expect(temperature.colour).toEqual('green');
+      });
+  });
+
 });
 
 

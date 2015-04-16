@@ -4,8 +4,11 @@ var Thermostat = function(){
 };
 
 Thermostat.prototype.up = function() {
-  if(this.temperature >= 25){
+  if(this.temperature >= 25 && this.powersaving){
     throw new Error("You cannot go higher than 25 degrees");
+  };
+  if(this.temperature >= 35){
+    throw new Error("You cannot go higher than 35 degrees");
   };
   this.temperature ++;
 };
