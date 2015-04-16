@@ -21,8 +21,19 @@ describe('Thermostat', function(){
     });
 
     it('can reset to default value', function(){
+      thermostat.temperature = 21;
       thermostat.resetTemp();
-      expect(thermostat.reset).toEqual(20);
+      expect(thermostat.temperature).toEqual(20);
+    });
+
+  });
+
+  describe('can have max or min temperature', function(){
+
+    it('cannot lower temperature below 10', function(){
+      thermostat.temperature = 10;
+      expect( function(){ thermostat.down(); }).toThrow("You cannot go lower than 10 degrees");
+
     });
 
   });
