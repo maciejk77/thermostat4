@@ -32,8 +32,14 @@ describe('Thermostat', function(){
 
     it('cannot lower temperature below 10', function(){
       thermostat.temperature = 10;
-      expect( function(){ thermostat.down(); }).toThrow("You cannot go lower than 10 degrees");
+      expect( function(){ thermostat.down(); }).toThrow(new Error("You cannot go lower than 10 degrees"));
 
+    });
+
+    it('cannot raise over 25 degrees when powersaving is on', function() {
+      thermostat.powersaving;
+      thermostat.temperature = 25;
+      expect( function(){ thermostat.up(); }).toThrow(new Error("You cannot go higher than 25 degrees"));
     });
 
   });
